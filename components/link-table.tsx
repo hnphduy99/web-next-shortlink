@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Link } from "@prisma/client";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check, Pencil, Trash2, X } from "lucide-react";
 import NextLink from "next/link";
@@ -24,6 +23,14 @@ import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import CopyButton from "./copy-button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+
+type LinkRow = {
+  id: string;
+  shortCode: string;
+  originalUrl: string;
+  clicks: number;
+  createdAt: Date;
+};
 
 function buildPageHref(page: number, pageSize: number) {
   const params = new URLSearchParams();
@@ -47,7 +54,7 @@ export default function LinkTable({
   totalCount,
   totalPages
 }: {
-  links: Link[];
+  links: LinkRow[];
   page: number;
   pageSize: number;
   totalCount: number;
@@ -58,12 +65,12 @@ export default function LinkTable({
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editUrl, setEditUrl] = useState("");
   const [editSlug, setEditSlug] = useState("");
-  const [deletingLink, setDeletingLink] = useState<Link | null>(null);
+  const [deletingLink, setDeletingLink] = useState<LinkRow | null>(null);
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  function startEditing(link: Link) {
+  function startEditing(link: LinkRow) {
     setEditingId(link.id);
     setEditUrl(link.originalUrl);
     setEditSlug(link.shortCode);
