@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import type { Link } from "@prisma/client";
+import { Link } from "@prisma/client";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check, Pencil, Trash2, X } from "lucide-react";
 import NextLink from "next/link";
