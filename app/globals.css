@@ -128,3 +128,18 @@
     @apply font-sans;
   }
 }
+
+button {
+  cursor: pointer;
+}
+
+.copy-btn {
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.copy-btn--copied {
+  @apply border-primary bg-slate-900 text-green-500;
+}
