@@ -124,7 +124,7 @@ export default function LinkTable({
     router.push(query ? `${pathname}?${query}` : pathname);
   }
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "";
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || `https://${process.env.VERCEL_URL}`;
   const startIndex = totalCount === 0 ? 0 : (page - 1) * pageSize + 1;
   const endIndex = totalCount === 0 ? 0 : startIndex + links.length - 1;
   const visiblePages = Array.from(
