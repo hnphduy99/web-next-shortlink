@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
@@ -39,6 +40,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   );
